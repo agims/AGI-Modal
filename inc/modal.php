@@ -39,7 +39,7 @@
 			if($bootstrap_version == "2") { // Bootstrap Modal Version 2
 				?>
 					<!-- Modal -->
-					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="myAGIModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							<<?=$title_size?> class="modal-title" id="myModalLabel"><?=$title?></<?=$title_size?>>
