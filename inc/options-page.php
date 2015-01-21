@@ -280,6 +280,7 @@ function agi_modal_option_page() {
 					</tr>
 				</tbody>
 			</table>
+			<h3>Don't forget to use <code><?=plugins_url( 'agi-modal-redirect.php', __DIR__)?></code> as your redirect URL.</h3>
 			<?php submit_button(); ?>
 		</form>
 	</div>
