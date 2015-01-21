@@ -266,7 +266,7 @@ function agi_modal_option_page() {
 								
 								
 								foreach($bootstrap_versions as $bootstrap_version) {
-									if(agi_modal_bootstrap_version == $bootstrap_version) {
+									if($agi_modal_bootstrap_version == $bootstrap_version) {
 										$selected = " selected='selected'";
 									} else {
 										$selected = "";
