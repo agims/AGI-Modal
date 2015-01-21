@@ -11,12 +11,12 @@
 		
 		if(!get_option('agi_modal_is_bootstrap')) {
 			
-			wp_register_script( 'agi_modal_js', plugins_url( 'js/custom-bs-modal-ck.js', __DIR__), array(), '3.3.1', TRUE);
+			wp_register_script( 'agi_modal_js', plugins_url( 'js/custom-bs-modal-ck.js',dirname(__FILE__)), array(), '3.3.1', TRUE);
 			wp_enqueue_script( 'agi_modal_js');
 			
 		}
 				
-		wp_register_script( 'agi_modal_main', plugins_url( 'js/main-ck.js', __DIR__), array(), '1', TRUE);
+		wp_register_script( 'agi_modal_main', plugins_url( 'js/main-ck.js', dirname(__FILE__)), array(), '1', TRUE);
 		wp_enqueue_script( 'agi_modal_main' );
 	}
 	

@@ -24,7 +24,8 @@
 		
 		if(strpos($hook, '#') !== FALSE) {
 			$hook_id = str_replace('#', '', $hook)
-			?><script>console.log('<?=$hook_id?>');</script><?php
+			?><script>console.log('<?=$hook_id?>');</script>
+			<?php
 		}
 		
 		$put_hook				= (get_option('agi_modal_include_hook_el') ? '<!-- Hook --><div id="' . str_replace('#', '', $hook) . '"></div><!-- END Hook -->' : '');
@@ -39,7 +40,7 @@
 			if($bootstrap_version == "2") { // Bootstrap Modal Version 2
 				?>
 					<!-- Modal -->
-					<div id="myAGIModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="myAGIModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							<<?=$title_size?> class="modal-title" id="myModalLabel"><?=$title?></<?=$title_size?>>
@@ -57,7 +58,7 @@
 			} else { // Bootstrap Modal Version 3
 				?>
 					<!-- Modal -->
-					<div class="modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -80,7 +81,7 @@
 		} else { // Modified Bootstrap Modal Version 3
 			?>
 			<!-- Modal -->
-			<div class="agi-modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="agi-modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 				<div class="agi-modal-dialog">
 					<div class="agi-modal-content">
 						<div class="agi-modal-header">
@@ -101,10 +102,10 @@
 			<?php
 		}
 		
-		echo $put_hook;
+		echo $put_hook . "\n";
 
 
-		$modal_shown = plugins_url( 'agi-modal-shown.php', __DIR__);
+		$modal_shown = plugins_url( 'agi-modal-shown.php', dirname(__FILE__));
 		
 		if($is_bootstrap && $bootstrap_version == "2") {
 			$show_modal_event = "show";
