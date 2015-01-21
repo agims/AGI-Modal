@@ -17,8 +17,7 @@
 	 'checks.php',
 	 'modal.php',
 	 'options-page.php',
-	 'session-setup.php',
-	 'temp.php'
+	 'session-setup.php'
  );
  
  foreach($files_to_require as $file_to_require) {

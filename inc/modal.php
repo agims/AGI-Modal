@@ -137,17 +137,6 @@
 	}
 	
 
-	function display_agi_modal_button() {
-		?>
-			<!-- Button trigger modal -->
-			<div style="margin-bottom: 1em;text-align:center;">
-				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myAGIModal">
-				  Launch demo modal
-				</button>
-			</div>
-		<?php
-
-	}
 
 	function load_after_wp() {
 		function show_agi_modal() {
@@ -174,7 +163,6 @@
 		
 		if( show_agi_modal() ) {
 			add_action('get_footer','display_agi_modal');
-			add_action('get_footer', 'display_agi_modal_button');
 		}
 		
 		
