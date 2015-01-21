@@ -7,18 +7,6 @@
 			wp_deregister_script( 'jquery' );
 			wp_register_script( 'jquery', '//code.jquery.com/jquery-1.11.2.min.js', array(), '1.11.2', FALSE);
 			wp_enqueue_script( 'jquery' );
-			
-			if(!get_option('agi_modal_is_bootstrap')) {
-				
-				wp_register_script( 'agi_transition_js', plugins_url( 'js/bootstrap/transition.js', __DIR__), array('jquery'), '3.3.1', TRUE);
-				wp_enqueue_script( 'agi_transition_js');
-	
-	
-				wp_register_script( 'agi_modal_js', plugins_url( 'js/bootstrap/modal.js', __DIR__), array('jquery'), '3.3.1', TRUE);
-				wp_enqueue_script( 'agi_modal_js');
-				
-			}
-
 		}
 		
 		if(!get_option('agi_modal_is_bootstrap')) {

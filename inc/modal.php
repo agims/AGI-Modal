@@ -162,7 +162,7 @@
 		}
 		
 		if( show_agi_modal() ) {
-			add_action('get_footer','display_agi_modal');
+			add_action('wp_footer','display_agi_modal');
 		}
 		
 		
