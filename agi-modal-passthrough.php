@@ -3,7 +3,7 @@
         session_start();
     }
     
-    if(!isset($_SESSION['agi_modal_last_activity']) || $_SESSION['agi_modal_last_activity'] >= time() - (60*10)) {
+    if(!isset($_SESSION['agi_modal_last_activity'])) {
 	    header("Location : http://$_SERVER[HTTP_HOST]");
     }
     
