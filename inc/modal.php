@@ -51,7 +51,9 @@
 							?>
 						</div>
 						<div class="modal-body">
-							<?=$content?>
+							<div id="agi-content">
+								<?=$content?>
+							</div>
 						</div>
 					</div>
 				<?php
@@ -71,7 +73,9 @@
 									?>
 								</div>
 								<div class="modal-body">
-									<?=$content?>
+									<div id="agi-content">
+										<?=$content?>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -94,7 +98,9 @@
 							?>
 						</div>
 						<div class="agi-modal-body">
-							<?=$content?>
+							<div id="agi-content">
+								<?=$content?>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -144,7 +150,7 @@
 			if($_SESSION['agi_modal_form_finished']) {
 				return FALSE;
 			} 
-			if($_SESSION['agi_modal_form_loaded'] > 3) {
+			if($_SESSION['agi_modal_form_loaded'] > 1) {
 				return FALSE;
 			}
 			if(!is_single() && !get_option('agi_modal_on_pages')) {
