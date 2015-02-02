@@ -25,16 +25,3 @@
 	 $filename = 'inc/' . $file_to_require;
 	 require_once($filename);
  }
-
-
-register_deactivation_hook(__FILE__, 'agi_modal_deactivate');
-
-function agi_modal_deactivate() {
-	global $needed_options;
-	
-	foreach($needed_options as $option => $default_value) {
-		delete_option($option);
-	}
-	
-	delete_option('agi_modal_version');
-}
