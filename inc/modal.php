@@ -226,9 +226,9 @@
 			return TRUE;
 		}
 		
-//		if( show_agi_modal() ) {
+		if( show_agi_modal() ) {
 			add_action('wp_footer','display_agi_modal');
-//		}
+		}
 		
 		
 	}
