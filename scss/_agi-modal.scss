@@ -31,6 +31,7 @@
 	background-color: #999;
 	@include border-radius(50%);
 	border: 3px solid #FFFFFF;
+	box-sizing: border-box;
 	display: inline-block;
 	height: 27px;
 	padding: 0px 4px;
