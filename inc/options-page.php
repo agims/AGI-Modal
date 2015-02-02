@@ -21,7 +21,7 @@ add_action('admin_menu', 'agi_modal_option_menu');
 
 function agi_modal_option_page() {
 	if( !current_user_can('manage_options')) {
-		wp_die( __('Umm, what are you doing?', 'rincon'));
+		wp_die( __('Umm, what are you doing?', 'sherpa'));
 	}
 	
 	global $needed_options;
@@ -33,98 +33,102 @@ function agi_modal_option_page() {
 	?>
 	<div class="wrap">
 		<h2>AGI Modal Options</h2>
-		<form method="post" action="options.php">
+		<?php
+			// Put into a variable so that if we need to change it for testing we don't lose the original
+			$form_location = 'options.php';
+		?>
+		<form method="post" action="<?=$form_location?>">
 			<?php settings_fields('agi_modal'); ?>
 			<h3>Modal Look</h3>
 			<table class="form-table">
 				<tbody>
-					<tr id="use_header">
+					<tr id="use-header">
 						<th scope="row">
-							<label for="agi_modal_use_header">Use Header</label>
+							<label for="agi_modal_using_header">Use Header?</label>
 						</th>
 						<td>
-							<?php $checked = ($agi_modal_use_header ? 'checked' : ''); ?>
-							<input name="agi_modal_use_header" id="agi_modal_use_header" type="checkbox" <?=$checked?>>
+							<?php $checked = ($agi_modal_using_header ? 'checked' : ''); ?>
+							<input name="agi_modal_using_header" id="agi_modal_using_header" type="checkbox" <?=$checked?>>
 						</td>
 					</tr>
-					<div id="header-info">
-						<tr id="title">
-							<th scope="row">
-								<label for="agi_modal_title">Title</label>
-							</th>
-							<td>
-								<input name="agi_modal_title" id="agi_modal_title" type="text" value="<?=$agi_modal_title?>" class="regular-text ">
-							</td>
-						</tr>
-						<tr id="title-size">
-							<th scope="row">
-								<label for="agi_modal_title">Title Size</label>
-							</th>
-							<td>
-								<select id="agi_modal_title_size" name="agi_modal_title_size">
-								<?php
-									$title_size_options = array(
-										'h2', 'h3', 'h4', 'h5'
-									);
-									
-									
-									foreach($title_size_options as $title_option) {
-										if($agi_modal_title_size == $title_option) {
-											$selected = " selected='selected'";
-										} else {
-											$selected = "";
-										}
-										echo '<option value="' . $title_option . '" ' . $selected . '>&lt;' . $title_option . '&gt;</option>' . "\n";
+					<tr id="title" class="header-info">
+						<th scope="row">
+							<label for="agi_modal_title">Title</label>
+						</th>
+						<td>
+							<input name="agi_modal_title" id="agi_modal_title" type="text" value="<?=$agi_modal_title?>" class="regular-text ">
+						</td>
+					</tr>
+					<tr id="title-size" class="header-info">
+						<th scope="row">
+							<label for="agi_modal_title">Title Size</label>
+						</th>
+						<td>
+							<select id="agi_modal_title_size" name="agi_modal_title_size">
+							<?php
+								$title_size_options = array(
+									'h2', 'h3', 'h4', 'h5'
+								);
+								
+								
+								foreach($title_size_options as $title_option) {
+									if($agi_modal_title_size == $title_option) {
+										$selected = " selected='selected'";
+									} else {
+										$selected = "";
 									}
-									
-								?>
-								</select>
-							</td>
-						</tr>
-						<tr id="use-subtitle">
-							<th scope="row">
-								<label for="agi_modal_use_subtitle">Use Subtitle?</label>
-							</th>
-							<td>
-								<?php $checked = ($agi_modal_use_subtitle ? 'checked' : ''); ?>
-								<input name="agi_modal_use_subtitle" id="agi_modal_use_subtitle" type="checkbox" <?=$checked?>>
-							</td>
-						</tr>
-						<tr id="subtitle">
-							<th scope="row">
-								<label for="agi_modal_subtitle">Subtitle</label>
-							</th>
-							<td>
-								<input name="agi_modal_subtitle" id="agi_modal_subtitle" type="text" value="<?=$agi_modal_subtitle?>" class="regular-text ">
-							</td>
-						</tr>
-						<tr id="subtitle-size">
-							<th scope="row">
-								<label for="agi_modal_subtitle">Subtitle Size</label><br />
-								<small>Make sure it is a smaller size than the title size</small>
-							</th>
-							<td>
-								<select id="agi_modal_subtitle_size" name="agi_modal_subtitle_size">
-								<?php
-									$subtitle_size_options = array(
-										'h3', 'h4', 'h5', 'h6'
-									);
-									
-									
-									foreach($subtitle_size_options as $subtitle_option) {
-										if($agi_modal_subtitle_size == $subtitle_option) {
-											$selected = " selected='selected'";
-										} else {
-											$selected = "";
-										}
-										echo '<option value="' . $subtitle_option . '" ' . $selected . '>&lt;' . $subtitle_option . '&gt;</option>' . "\n";
+									echo '<option value="' . $title_option . '" ' . $selected . '>&lt;' . $title_option . '&gt;</option>' . "\n";
+								}
+								
+							?>
+							</select>
+						</td>
+					</tr>
+					<tr id="use-subtitle" class="header-info">
+						<th scope="row">
+							<label for="agi_modal_use_subtitle">Use Subtitle?<br />
+							<small><?=$agi_modal_use_subtitle?></small>
+							</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_use_subtitle ? 'checked' : ''); ?>
+							<input name="agi_modal_use_subtitle" id="agi_modal_use_subtitle" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
+					<tr id="subtitle" class="header-info">
+						<th scope="row">
+							<label for="agi_modal_subtitle">Subtitle</label>
+						</th>
+						<td>
+							<input name="agi_modal_subtitle" id="agi_modal_subtitle" type="text" value="<?=$agi_modal_subtitle?>" class="regular-text ">
+						</td>
+					</tr>
+					<tr id="subtitle-size" class="header-info">
+						<th scope="row">
+							<label for="agi_modal_subtitle">Subtitle Size</label><br />
+							<small>Make sure it is a smaller size than the title size</small>
+						</th>
+						<td>
+							<select id="agi_modal_subtitle_size" name="agi_modal_subtitle_size">
+							<?php
+								$subtitle_size_options = array(
+									'h3', 'h4', 'h5', 'h6'
+								);
+								
+								
+								foreach($subtitle_size_options as $subtitle_option) {
+									if($agi_modal_subtitle_size == $subtitle_option) {
+										$selected = " selected='selected'";
+									} else {
+										$selected = "";
 									}
-									
-								?>
-								</select>
-							</td>
-						</tr>
-					</div>
+									echo '<option value="' . $subtitle_option . '" ' . $selected . '>&lt;' . $subtitle_option . '&gt;</option>' . "\n";
+								}
+								
+							?>
+							</select>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 			<h3>Content</h3>
@@ -156,22 +160,23 @@ function agi_modal_option_page() {
 							<textarea name="agi_modal_html" id="agi_modal_html" class="large-text"><?=$agi_modal_html?></textarea>
 						</td>
 					</tr>
-					<tr id="use_header">
-						<th scope="row">
-							<label for="agi_modal_use_header">Use Header</label>
-						</th>
-						<td>
-							<?php $checked = ($agi_modal_use_header ? 'checked' : ''); ?>
-							<input name="agi_modal_use_header" id="agi_modal_use_header" type="checkbox" <?=$checked?>>
-						</td>
-					</tr>
 					<tr id="redirect-links">
 						<th scope="row">
-							<label for="agi_modal_redirect_links">Show Up on Pages?</label>
+							<label for="agi_modal_redirect_links">Redirect Links?</label><br />
+							<small>Uncheck if you are putting a contact form in the modal.</small>
 						</th>
 						<td>
 							<?php $checked = ($agi_modal_redirect_links ? 'checked' : ''); ?>
 							<input name="agi_modal_redirect_links" id="agi_modal_redirect_links" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
+					<tr id="redirect-links">
+						<th scope="row">
+							<label for="agi_modal_on_pages">Show Up on Pages?</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_on_pages ? 'checked' : ''); ?>
+							<input name="agi_modal_on_pages" id="agi_modal_on_pages" type="checkbox" <?=$checked?>>
 						</td>
 					</tr>
 					<tr id="number-of-pages">
@@ -325,12 +330,12 @@ function agi_modal_option_page() {
 			
 			
 			// Do this immediately
-			if($('#agi_modal_use_header').prop('checked')) {
-				$('#header-info').show();
+			if($('#agi_modal_using_header').prop('checked')) {
+				$('.header-info').show();
 			} else {
-				$('#header-info').hide();
+				$('.header-info').hide();
 			}
-			
+
 			if($('#agi_modal_use_subtitle').prop('checked')) {
 				$('#subtitle').show();
 				$('#subtitle-size').show();
@@ -367,6 +372,16 @@ function agi_modal_option_page() {
 			
 
 			// Listeners
+			$('#agi_modal_using_header').change(function() {
+				if(this.checked) {
+					console.log($(this).prop('checked'));
+					$('.header-info').fadeIn(200);
+				} else {
+					console.log($(this).prop('checked'));
+					$('.header-info').fadeOut(200);
+				}
+			});
+			
 			$('#agi_modal_use_subtitle').change(function() {
 				if(this.checked) {
 					$('#subtitle').fadeIn(200);

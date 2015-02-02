@@ -1,7 +1,7 @@
 <?php
 	
 	$needed_options = array(
-		'agi_modal_use_header'			=> TRUE,
+		'agi_modal_using_header'		=> FALSE,
 		'agi_modal_title'				=> 'Get More Information',
 		'agi_modal_title_size'			=> 'h3',
 		'agi_modal_use_subtitle'		=> FALSE,
@@ -30,3 +30,11 @@
 			add_option($option, $value);
 		}
 	}
+	
+if (!defined('MYPLUGIN_VERSION_KEY'))
+    define('MYPLUGIN_VERSION_KEY', 'agi_modal_version');
+
+if (!defined('MYPLUGIN_VERSION_NUM'))
+    define('MYPLUGIN_VERSION_NUM', '1.1');
+
+add_option(MYPLUGIN_VERSION_KEY, MYPLUGIN_VERSION_NUM);

@@ -27,6 +27,20 @@
 	}
 }
 
+#floating-button {
+	background-color: #999;
+	@include border-radius(50%);
+	border: 3px solid #FFFFFF;
+	display: inline-block;
+	height: 27px;
+	padding: 0px 4px;
+	position: absolute;
+	right: -25px;
+	text-align: center;
+	top: -25px;
+	width: 27px;
+}
+
 button.close {
 	-webkit-appearance: none;
 	padding: 0;
