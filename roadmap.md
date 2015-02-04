@@ -5,6 +5,7 @@
 * Option for how many views until it stops showing up
 
 ##Version 1.2
+* Option for color for curtain behind modal
 * Option for removing padding (for images)
 * Option for where hook is placed
 * Option for text color

@@ -1,4 +1,4 @@
-// @codekit-prepend "jquery.waypoints.min.js";
+// @codekit-prepend "jquery.waypoints.js";
 
 (function( $ ) {
 	$(document).ready(function() {
