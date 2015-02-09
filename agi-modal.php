@@ -6,6 +6,8 @@
  * Author: Chris G. Clapp
  * Author URI: http://www.chrisclapp.com
  * Text Domain: agi-modal
+ * GitHub Theme URI: https://github.com/chris-agims/AGI-Modal
+ * GitHub Branch: Master
  */
  
  defined('ABSPATH') or die("Dude seriously?");
