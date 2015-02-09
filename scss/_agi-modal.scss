@@ -7,6 +7,10 @@
 	}
 }
 
+.agi-modal-dialog {
+	margin: 45px auto 0;
+}
+
 .close {
 	float: right;
 	font-size: 21px;
@@ -14,23 +18,59 @@
 	line-height: 1;
 	color: #000;
 	text-shadow: 0 1px 0 #fff;
-	filter: alpha(opacity=20);
-	opacity: .2;
 	&:hover,
 	&:focus {
 		background-color: transparent;
 		color: #000;
 		text-decoration: none;
 		cursor: pointer;
-		filter: alpha(opacity=50);
-		opacity: .5;
 	}
 }
 
-button.close {
-	-webkit-appearance: none;
-	padding: 0;
-	cursor: pointer;
-	background: 0 0;
-	border: 0;
+$default-text-shadow-color: rgba(black, 0.5);
+$default-text-shadow-blur: 1px;
+$default-text-shadow-h-offset: 1px;
+$default-text-shadow-v-offset: 1px;
+
+#floating-button {
+	box-sizing: border-box;
+	display: inline-block;
+	height: 27px;
+	padding: 0px 4px;
+	position: absolute;
+	right: -25px;
+	text-align: center;
+	top: -25px;
+	width: 27px;
+	button.close {
+		-webkit-appearance: none;
+		background-color: darken(#F00, 15%);
+		border: 3px solid #FFF;
+		@include border-radius(50%);
+		color: #FFF;
+		cursor: pointer;
+		display: block;
+		height: 30px;
+		line-height: 0;
+		max-width: inherit;
+		@include opacity(1);
+		padding: 0;
+		text-align: center;
+		@include text-shadow();
+		@include transition(all 150ms);
+		width: 30px;
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: #F00;
+			color: #FFF;
+			@include opacity(1);
+		}
+		span {
+			position: relative;
+			top: -1px;
+		}
+	}
 }
+
+

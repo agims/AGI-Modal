@@ -1,6 +1,7 @@
 <?php
 	
 	$needed_options = array(
+		'agi_modal_using_header'		=> FALSE,
 		'agi_modal_title'				=> 'Get More Information',
 		'agi_modal_title_size'			=> 'h3',
 		'agi_modal_use_subtitle'		=> FALSE,
@@ -9,11 +10,13 @@
 		'agi_modal_using_shortcode'		=> TRUE,
 		'agi_modal_shortcode'			=> '',
 		'agi_modal_html'				=> '',
+		'agi_modal_redirect_links'		=> TRUE,
 		'agi_modal_on_pages'			=> TRUE,
 		'agi_modal_number_of_pages'		=> '3',
 		'agi_modal_on_posts'			=> TRUE,
 		'agi_modal_number_of_posts'		=> '1',
 		'agi_modal_reset_time'			=> '10',
+		'agi_modal_number_of_views'		=> '3',
 		'agi_modal_hook'				=> '#agi-modal-hook',
 		'agi_modal_hook_percent'		=> '100',
 		'agi_modal_include_hook_el'		=> TRUE,
@@ -27,3 +30,11 @@
 			add_option($option, $value);
 		}
 	}
+	
+if (!defined('MYPLUGIN_VERSION_KEY'))
+    define('MYPLUGIN_VERSION_KEY', 'agi_modal_version');
+
+if (!defined('MYPLUGIN_VERSION_NUM'))
+    define('MYPLUGIN_VERSION_NUM', '1.1');
+
+add_option(MYPLUGIN_VERSION_KEY, MYPLUGIN_VERSION_NUM);

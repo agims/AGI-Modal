@@ -2,13 +2,16 @@
 /**
  * Plugin Name: AGI Modal
  * Description: Add a modal window that pops up when a certain point is reached.
- * Version: 1.0
+ * Version: 1.1.1 - Terlingua
  * Author: Chris G. Clapp
  * Author URI: http://www.chrisclapp.com
  * Text Domain: agi-modal
+ * GitHub Theme URI: https://github.com/chris-agims/AGI-Modal
+ * GitHub Branch: Master
  */
  
  defined('ABSPATH') or die("Dude seriously?");
+ 
  
  // Set up required files
  $files_to_require = array(
