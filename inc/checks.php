@@ -17,9 +17,11 @@
 		'agi_modal_number_of_posts'		=> '1',
 		'agi_modal_reset_time'			=> '10',
 		'agi_modal_number_of_views'		=> '3',
+		'agi_modal_use_hook'			=> TRUE,
 		'agi_modal_hook'				=> '#agi-modal-hook',
 		'agi_modal_hook_percent'		=> '100',
 		'agi_modal_include_hook_el'		=> TRUE,
+		'agi_modal_time'				=> '5',
 		'agi_modal_load_jquery'			=> FALSE,
 		'agi_modal_is_bootstrap'		=> FALSE,
 		'agi_modal_bootstrap_version'	=> '3'
