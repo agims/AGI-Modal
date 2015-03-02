@@ -1,7 +1,13 @@
 <?php
 	
+	$hook = FALSE;
+	$use_hook = FALSE;
 	
 	function display_agi_modal() {
+		
+		// Pull in our globals
+		global $use_hook;
+		global $hook;
 
 		// Set up our variables
 		$using_header		= get_option('agi_modal_using_header');
@@ -11,17 +17,20 @@
 		$subtitle			= get_option('agi_modal_subtitle');
 		$subtitle_size		= get_option('agi_modal_subtitle_size');
 		$redirect_links		= get_option('agi_modal_redirect_links');
+		$use_hook			= get_option('agi_modal_use_hook');
+
+		if(get_option('agi_modal_hook')) {
+			$hook			= get_option('agi_modal_hook');
+		} else {
+			$hook			= '#agi-modal-hook';
+		}
+
+
 		if(get_option('agi_modal_using_shortcode')) {
 			$content			= do_shortcode(get_option('agi_modal_shortcode'));
 		} else {
 			$content			= get_option('agi_modal_html');
 		}
-		if(get_option('agi_modal_hook')) {
-			$hook				= get_option('agi_modal_hook');
-		} else {
-			$hook				= '#agi-modal-hook';
-		}
-		$hook_percent			= get_option('agi_modal_hook_percent') . "%";
 		
 		
 		if(strpos($hook, '#') !== FALSE) {
@@ -146,7 +155,42 @@
 			$show_modal_event = "show.bs.modal";
 		}
 		
-		
+		function agi_modal_launcher() {
+			
+			global $use_hook;
+			
+			if($use_hook == TRUE) {
+				$hook_percent			= get_option('agi_modal_hook_percent') . "%";
+				
+				global $hook;
+				
+				$to_return = "
+						// Set up our waypoint
+						var waypoints = $('{$hook}').waypoint(function(direction) {
+							$('#myAGIModal').modal('show');
+							console.log('Waypoint Tripped');
+							this.destroy(); 
+						}, {
+							offset: '{$hook_percent}'
+						});
+
+				";
+			} else {
+				$load_time			= get_option('agi_modal_time');
+
+				$to_return = "
+						// Set up our timer
+						var agiLaunchDelay = {$load_time} * 1000;
+						
+						setTimeout(function() {
+							$('#myAGIModal').modal('show');
+							console.log('Timer Tripped');
+						}, agiLaunchDelay);
+				";
+			}
+			
+			return $to_return;
+		}
 		
 		function agi_redirect_links() {
 			$to_redirect = get_option('agi_modal_redirect_links');
@@ -182,14 +226,8 @@
 							$.get('{$modal_shown}');
 						});
 						
-						// Set up our waypoint
-						var waypoints = $('{$hook}').waypoint(function(direction) {
-							$('#myAGIModal').modal('show');
-							console.log('Waypoint Tripped');
-							this.destroy(); 
-						}, {
-							offset: '{$hook_percent}'
-						});
+						" . agi_modal_launcher() . "
+						
 						
 						" . agi_redirect_links() . "
 											

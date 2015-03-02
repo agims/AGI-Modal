@@ -241,6 +241,16 @@ function agi_modal_option_page() {
 			<h3>Technical Details</h3>
 			<table class="form-table">
 				<tbody>
+					<tr id="use_hook">
+						<th scope="row">
+							<label for="agi_modal_use_hook">Use Hook?</label><br />
+							<small>Will it be based off of a location that comes into view or a timer?</small>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_use_hook ? 'checked' : ''); ?>
+							<input name="agi_modal_use_hook" id="agi_modal_use_hook" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
 					<tr id="hook">
 						<th scope="row">
 							<label for="agi_modal_hook">Hook</label>
@@ -265,6 +275,15 @@ function agi_modal_option_page() {
 						<td>
 							<?php $checked = ($agi_modal_include_hook_el ? 'checked' : ''); ?>
 							<input name="agi_modal_include_hook_el" id="agi_modal_include_hook_el" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
+					<tr id="time">
+						<th scope="row">
+							<label for="agi_modal_time">Time</label><br />
+							<small>How many seconds until it pops up?</small>
+						</th>
+						<td>
+							<input name="agi_modal_time" id="agi_modal_time" type="text" value="<?=$agi_modal_time?>" class="small-text">
 						</td>
 					</tr>
 					<tr id="load-jquery">
@@ -364,6 +383,18 @@ function agi_modal_option_page() {
 				$('#number-of-posts').hide();
 			}
 			
+			if($('#agi_modal_use_hook').prop('checked')) {
+				$('#hook').show();
+				$('#hook-percent').show();
+				$('#include-hook-el').show();
+				$('#time').hide();
+			} else {
+				$('#hook').hide();
+				$('#hook-percent').hide();
+				$('#include-hook-el').hide();
+				$('#time').show();
+			}
+			
 			if($('#agi_modal_is_bootstrap').prop('checked')) {
 				$('#bootstrap-version').show();
 			} else {
@@ -429,6 +460,21 @@ function agi_modal_option_page() {
 				}
 			});
 
+			$('#agi_modal_use_hook').change(function() {
+				if(this.checked) {
+					$('#hook').fadeIn(200);
+					$('#hook-percent').fadeIn(200);
+					$('#include-hook-el').fadeIn(200, function() {
+						$('#time').fadeOut(200);
+					});
+				} else {
+					$('#hook').fadeOut(200);
+					$('#hook-percent').fadeOut(200);
+					$('#include-hook-el').fadeOut(200, function() {
+						$('#time').fadeIn(200);
+					});
+				}
+			});
 			
 			$('#agi_modal_shortcode').blur(function() {
 				switchQuotes($(this));
@@ -437,6 +483,8 @@ function agi_modal_option_page() {
 			$('#agi_modal_html').blur(function() {
 				switchQuotes($(this));
 			});
+			
+			
 			
 			$('#agi_modal_hook').keyup(function() {
 				var hookVal = $(this).val();

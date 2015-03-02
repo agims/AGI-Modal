@@ -4,6 +4,7 @@
 		echo "<pre>\n";
 		print_r($_SESSION);
 		echo "</pre>";
+		echo "Use Hook = " . (get_option('agi_modal_use_hook') == TRUE ? "T" : "F") . "<br />\n";
 		echo "Number of Posts: " . get_option('agi_modal_number_of_posts') . "<br />\n";
 		echo "Number of Pages: " . get_option('agi_modal_number_of_pages') . "<br />\n";
 	}
