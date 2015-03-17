@@ -6,7 +6,8 @@
  * Author: Chris G. Clapp
  * Author URI: http://www.chrisclapp.com
  * Text Domain: agi-modal
- * GitHub Theme URI: https://github.com/chris-agims/AGI-Modal
+ * GitHub Plugin URI: chris-agims/AGI-Modal
+ * GitHub Plugin URI: https://github.com/chris-agims/AGI-Modal
  * GitHub Branch: master
  */
  
