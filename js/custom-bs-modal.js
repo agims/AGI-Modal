@@ -1,2 +1,2 @@
 // @codekit-prepend "bootstrap/transition.js";
-// @codekit-prepend "bootstrap/modal.js";
+// @codekit-prepend "bootstrap/modal-agi.js";

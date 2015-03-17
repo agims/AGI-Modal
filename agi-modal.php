@@ -22,7 +22,7 @@
 	 'options-page.php',
 	 'session-setup.php',
 	 // Uncomment while testing
-	 // 'temp.php',
+	 'temp.php',
  );
  
  foreach($files_to_require as $file_to_require) {

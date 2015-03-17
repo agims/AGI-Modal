@@ -160,6 +160,15 @@ function agi_modal_option_page() {
 							<textarea name="agi_modal_html" id="agi_modal_html" class="large-text"><?=$agi_modal_html?></textarea>
 						</td>
 					</tr>
+					<tr id="remove-padding" class="header-info">
+						<th scope="row">
+							<label for="agi_modal_remove_padding">Subtitle</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_remove_padding ? 'checked' : ''); ?>
+							<input name="agi_modal_remove_padding" id="agi_modal_remove_padding" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
 					<tr id="redirect-links">
 						<th scope="row">
 							<label for="agi_modal_redirect_links">Redirect Links?</label><br />

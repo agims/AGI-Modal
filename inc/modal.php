@@ -16,6 +16,7 @@
 		$use_subtitle		= get_option('agi_modal_use_subtitle');
 		$subtitle			= get_option('agi_modal_subtitle');
 		$subtitle_size		= get_option('agi_modal_subtitle_size');
+		$remove_padding		= get_option('agi_modal_remove_padding');
 		$redirect_links		= get_option('agi_modal_redirect_links');
 		$use_hook			= get_option('agi_modal_use_hook');
 
@@ -32,6 +33,11 @@
 			$content			= get_option('agi_modal_html');
 		}
 		
+		if($remove_padding == TRUE) {
+			$padding_class = " no-padding";
+		} else {
+			$padding_class = '';
+		}
 		
 		if(strpos($hook, '#') !== FALSE) {
 			$hook_id = str_replace('#', '', $hook)
@@ -39,7 +45,7 @@
 			<?php
 		}
 		
-		$put_hook				= (get_option('agi_modal_include_hook_el') ? '<!-- Hook --><div id="' . str_replace('#', '', $hook) . '"></div><!-- END Hook -->' : '');
+		$put_hook			= (get_option('agi_modal_include_hook_el') ? '<!-- Hook --><div id="' . str_replace('#', '', $hook) . '"></div><!-- END Hook -->' : '');
 		
 		$is_bootstrap		= get_option('agi_modal_is_bootstrap');
 		$bootstrap_version	= get_option( 'agi_modal_bootstrap_version');
@@ -52,27 +58,29 @@
 				?>
 					<!-- Modal -->
 					<div id="myAGIModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
-						<?php
-							if($using_header) {
-								?>
-						<div class="modal-header">
-							<<?=$title_size?> class="modal-title" id="myModalLabel"><?=$title?></<?=$title_size?>>
+						<div id="myAGIModalWrap">
 							<?php
-								if($use_subtitle) {
-									echo "<{$subtitle_size} class=\"modal-subtitle\">{$subtitle}</{$subtitle_size}>";
-								}
-							?>
-						</div>
+								if($using_header) {
+									?>
+							<div class="modal-header">
+								<<?=$title_size?> class="modal-title" id="myModalLabel"><?=$title?></<?=$title_size?>>
 								<?php
-								$agi_modal_close_button = '';
-							} else {
-								$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>';
-							} 
-							?>
-						<?=$agi_modal_close_button?>
-						<div class="modal-body">
-							<div id="agi-content">
-								<?=$content?>
+									if($use_subtitle) {
+										echo "<{$subtitle_size} class=\"modal-subtitle\">{$subtitle}</{$subtitle_size}>";
+									}
+								?>
+							</div>
+									<?php
+									$agi_modal_close_button = '';
+								} else {
+									$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>';
+								} 
+								?>
+							<?=$agi_modal_close_button?>
+							<div class="modal-body<?=$padding_class?>">
+								<div id="agi-content">
+									<?=$content?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -81,7 +89,7 @@
 				?>
 					<!-- Modal -->
 					<div class="modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
-						<div class="modal-dialog">
+						<div id="myAGIModalWrap" class="modal-dialog<?=padding_class?>">
 							<div class="modal-content">
 							<?php if($using_header) { ?>
 								<div class="modal-header">
@@ -99,7 +107,7 @@
 								$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 							}	?>
 								<?=$agi_modal_close_button?>
-								<div class="modal-body">
+								<div class="modal-body<?=$padding_class?>">
 									<div id="agi-content">
 										<?=$content?>
 									</div>
@@ -113,7 +121,7 @@
 			?>
 			<!-- Modal -->
 			<div class="agi-modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
-				<div class="agi-modal-dialog">
+				<div id="myAGIModalWrap" class="agi-modal-dialog">
 					<div class="agi-modal-content">
 					<?php if($using_header) { ?>
 						<div class="agi-modal-header">
@@ -131,7 +139,7 @@
 								$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 							}	?>
 						<?=$agi_modal_close_button?>
-						<div class="agi-modal-body">
+						<div class="agi-modal-body<?=$padding_class?>">
 							<div id="agi-content">
 								<?=$content?>
 							</div>
@@ -150,9 +158,15 @@
 		
 		
 		if($is_bootstrap && $bootstrap_version == "2") {
-			$show_modal_event = "show";
+			$show_modal_event 		= "show";
+			$shown_modal_event 		= "shown";
+			$hide_modal_event 		= "hide";
+			$hidden_modal_event 	= "hidden";
 		} else {
-			$show_modal_event = "show.bs.modal";
+			$show_modal_event 		= "show.bs.modal";
+			$shown_modal_event 		= "shown.bs.modal";
+			$hide_modal_event		= "hide.bs.modal";
+			$hidden_modal_event		= "hidden.bs.modal";
 		}
 		
 		function agi_modal_launcher() {
@@ -219,17 +233,63 @@
 		
 		echo "
 			<script>
+			
+				var agiModalWindowHeight = 0;
+				var agiModalWindowWidth = 0;
+				var agiModalModalHeight = 0;
+				var agiModalModalTop = 0;
+				var agiModalIsOpen = false;
+			
+
 				(function( $ ) {
 					$(document).ready(function() {
-						// AJAX - Update the Session to show that the modal has been loaded
+
+						function agiModalSetTop() {
+							agiModalWindowHeight = $(window).height() * 0.7;
+							console.log('Window: ' + agiModalWindowHeight);
+							agiModalModalHeight = $('#myAGIModalWrap').height();
+							console.log('Modal: ' + agiModalModalHeight);
+							agiModalModalTop = (agiModalWindowHeight / 2) - (agiModalModalHeight / 2);
+							console.log('Top: ' + agiModalModalTop);
+							$('#myAGIModalWrap').css('margin-top',agiModalModalTop + 'px');
+						}
+
+
 						$('#myAGIModal').on('{$show_modal_event}', function (e) {
+							agiModalIsOpen = true;
+							
+							agiModalSetTop();						
+
+							// AJAX - Update the Session to show that the modal has been loaded
 							$.get('{$modal_shown}');
 						});
+						
+						
 						
 						" . agi_modal_launcher() . "
 						
 						
 						" . agi_redirect_links() . "
+						
+						$('#myAGIModal').on('{$shown_modal_event}', function (e) {
+							agiModalSetTop();
+						});
+						
+						$('#myAGIModal').on('{$hide_modal_event}', function (e) {
+							agiModalIsOpen = false;
+						});
+						
+						$(window).resize(function() {
+							agiModalWindowWidth = $(window).width();
+							if(agiModalWindowWidth >= 768) {
+								if(agiModalIsOpen == true) {
+									agiModalSetTop();
+								}
+							} else {
+								console.log('Do something here for mobile');
+							}
+						});
+						
 											
 					});
 				})(jQuery);
@@ -247,7 +307,7 @@
 				return FALSE;
 			} 
 			if($_SESSION['agi_modal_form_loaded'] >= get_option('agi_modal_number_of_views')) {
-				return FALSE;
+				//return FALSE;
 			}
 			if(!is_single() && !get_option('agi_modal_on_pages')) {
 				return FALSE;
