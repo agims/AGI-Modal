@@ -15,8 +15,10 @@
 			wp_enqueue_script( 'agi_modal_js');
 			
 		}
+		
+		$plugin_version = get_option('agi_modal_version');
 				
-		wp_register_script( 'agi_modal_main', plugins_url( 'js/main-ck.js', dirname(__FILE__)), array(), '1', TRUE);
+		wp_register_script( 'agi_modal_main', plugins_url( 'js/main-ck.js', dirname(__FILE__)), array(), $plugin_version, TRUE);
 		wp_enqueue_script( 'agi_modal_main' );
 	}
 	

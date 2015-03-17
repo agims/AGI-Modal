@@ -2,7 +2,8 @@
 	@include transition(margin-top 250ms);
 }
 
-.agi-modal {
+.agi-modal,
+.modal {
 	z-index: 100000;
 	&,
 	&:before,
@@ -15,7 +16,8 @@
 	margin: 45px auto 0;
 }
 
-.agi-modal-backdrop.in {
+.agi-modal-backdrop.in,
+.modal-backdrop.in {
 	filter: alpha(opacity=90);
 	opacity: 0.9;
 }
@@ -65,37 +67,5 @@ $default-text-shadow-v-offset: 1px;
 			}
 		}
 	}
-	button.close {
-		-webkit-appearance: none;
-		background-color: darken(#F00, 15%);
-		border: 3px solid #FFF;
-		@include border-radius(50%);
-		color: #FFF;
-		cursor: pointer;
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		display: block;
-		height: 30px;
-		line-height: 0;
-		max-width: inherit;
-		@include opacity(1);
-		padding: 0;
-		text-align: center;
-		@include text-shadow();
-		@include transition(all 150ms);
-		width: 30px;
-		&:hover,
-		&:active,
-		&:focus {
-			background-color: #F00;
-			color: #FFF;
-			@include opacity(1);
-		}
-		span {
-			font-size: 28px;
-			position: relative;
-			top: -2px;
-		}
-	}
 }
-
 
