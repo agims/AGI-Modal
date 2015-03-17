@@ -245,7 +245,7 @@
 					$(document).ready(function() {
 
 						function agiModalSetTop() {
-							agiModalWindowHeight = $(window).height() * 0.7;
+							agiModalWindowHeight = $(window).height();
 							console.log('Window: ' + agiModalWindowHeight);
 							agiModalModalHeight = $('#myAGIModalWrap').height();
 							console.log('Modal: ' + agiModalModalHeight);
