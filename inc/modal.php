@@ -89,7 +89,7 @@
 				?>
 					<!-- Modal -->
 					<div class="modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
-						<div id="myAGIModalWrap" class="modal-dialog<?=padding_class?>">
+						<div id="myAGIModalWrap" class="modal-dialog<?=$padding_class?>">
 							<div class="modal-content">
 							<?php if($using_header) { ?>
 								<div class="modal-header">
