@@ -2,24 +2,26 @@
 	@include transition(margin-top 250ms);
 }
 
-.agi-modal,
-.modal {
-	z-index: 100000;
-	&,
-	&:before,
-	&:after {
-		@include box-sizing(border-box);
+#myAGIModal {
+	.agi-modal,
+	.modal {
+		z-index: 100000;
+		&,
+		&:before,
+		&:after {
+			@include box-sizing(border-box);
+		}
 	}
-}
-
-.agi-modal-dialog {
-	margin: 45px auto 0;
-}
-
-.agi-modal-backdrop.in,
-.modal-backdrop.in {
-	filter: alpha(opacity=90);
-	opacity: 0.9;
+	
+	.agi-modal-dialog {
+		margin: 45px auto 0;
+	}
+	
+	.agi-modal-backdrop.in,
+	.modal-backdrop.in {
+		filter: alpha(opacity=90);
+		opacity: 0.9;
+	}
 }
 
 .no-padding {
