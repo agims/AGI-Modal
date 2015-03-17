@@ -38,6 +38,6 @@ if (!defined('MYPLUGIN_VERSION_KEY'))
     define('MYPLUGIN_VERSION_KEY', 'agi_modal_version');
 
 if (!defined('MYPLUGIN_VERSION_NUM'))
-    define('MYPLUGIN_VERSION_NUM', '1.2.3');
+    define('MYPLUGIN_VERSION_NUM', '1.2.4');
 
 add_option(MYPLUGIN_VERSION_KEY, MYPLUGIN_VERSION_NUM);
