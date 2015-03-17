@@ -1,15 +1,15 @@
 <?php
-/**
- * Plugin Name: AGI Modal
- * Description: Add a modal window that pops up when a certain point is reached.  Version 1.2.2 - Balmorhea
- * Version: 1.2.2.1
- * Author: Chris G. Clapp
- * Author URI: http://www.chrisclapp.com
- * Text Domain: agi-modal
- * GitHub Plugin URI: chris-agims/AGI-Modal
- * GitHub Plugin URI: https://github.com/chris-agims/AGI-Modal
- * GitHub Branch: master
- */
+/*
+Plugin Name:		AGI Modal
+Plugin URI:			https://github.com/chris-agims/AGI-Modal
+Description:		Add a modal window that pops up when a certain point is reached.  Version 1.2.2 - Balmorhea
+Version:			1.2.2.1
+Author:				Chris G. Clapp
+Author URI:			http://www.chrisclapp.com
+Text Domain:		agi-modal
+GitHub Plugin URI:	https://github.com/chris-agims/AGI-Modal
+GitHub Branch:		master
+*/
  
  defined('ABSPATH') or die("Dude seriously?");
  
