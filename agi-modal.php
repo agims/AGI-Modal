@@ -2,8 +2,8 @@
 /*
 Plugin Name:		AGI Modal
 Plugin URI:			https://github.com/chris-agims/AGI-Modal
-Description:		Add a modal window that pops up when a certain point is reached.  Version 1.2.4 - Balmorhea
-Version:			1.2.4
+Description:		Add a modal window that pops up when a certain point is reached.  Version 1.2.5 - Balmorhea
+Version:			1.2.5
 Author:				Chris G. Clapp
 Author URI:			http://www.chrisclapp.com
 Text Domain:		agi-modal

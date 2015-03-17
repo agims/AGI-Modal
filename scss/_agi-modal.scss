@@ -1,3 +1,7 @@
+#myAGIModalWrap {
+	@include transition(margin-top 250ms);
+}
+
 .agi-modal {
 	z-index: 100000;
 	&,
