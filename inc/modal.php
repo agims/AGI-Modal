@@ -307,7 +307,7 @@
 				return FALSE;
 			} 
 			if($_SESSION['agi_modal_form_loaded'] >= get_option('agi_modal_number_of_views')) {
-				//return FALSE;
+				return FALSE;
 			}
 			if(!is_single() && !get_option('agi_modal_on_pages')) {
 				return FALSE;
