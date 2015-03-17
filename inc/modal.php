@@ -5,6 +5,18 @@
 	
 	function display_agi_modal() {
 		
+		$close_button = '
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<circle id="close-outer" fill="#FFFFFF" cx="15" cy="15" r="14.5"/>
+<circle id="close-inner" fill="#B30000" cx="15" cy="15" r="12"/>
+<g>
+	<path id="close-x" fill="#FFFFFF" d="M12.6,15l-5-5.1L10,7.5l5,5.1l5.1-5.1l2.4,2.4L17.4,15l5.1,5.1l-2.4,2.4L15,17.4l-5.1,5.1l-2.4-2.4L12.6,15
+		z"/>
+</g>
+</svg>
+		';
+		
 		// Pull in our globals
 		global $use_hook;
 		global $hook;
@@ -73,7 +85,7 @@
 									<?php
 									$agi_modal_close_button = '';
 								} else {
-									$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>';
+									$agi_modal_close_button = '<div id="floating-button"><a href="#" data-dismiss="modal" aria-label="close">' . $close_button . '</a></div>';
 								} 
 								?>
 							<?=$agi_modal_close_button?>
@@ -104,7 +116,7 @@
 							<?php
 								$agi_modal_close_button = '';
 							} else {
-								$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+								$agi_modal_close_button = '<div id="floating-button"><a href="#" data-dismiss="modal" aria-label="close">' . $close_button . '</a></div>';
 							}	?>
 								<?=$agi_modal_close_button?>
 								<div class="modal-body<?=$padding_class?>">
@@ -136,7 +148,7 @@
 							<?php
 								$agi_modal_close_button = '';
 							} else {
-								$agi_modal_close_button = '<div id="floating-button"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+								$agi_modal_close_button = '<div id="floating-button"><a href="#" data-dismiss="modal" aria-label="close">' . $close_button . '</a></div>';
 							}	?>
 						<?=$agi_modal_close_button?>
 						<div class="agi-modal-body<?=$padding_class?>">

@@ -48,13 +48,23 @@ $default-text-shadow-v-offset: 1px;
 #floating-button {
 	box-sizing: border-box;
 	display: inline-block;
-	height: 27px;
-	padding: 0px 4px;
+	height: 25px;
+	padding: 0px;
 	position: absolute;
-	right: -25px;
+	right: -15px;
 	text-align: center;
-	top: -25px;
-	width: 27px;
+	top: -15px;
+	width: 25px;
+	#close-inner {
+		@include transition(all 250ms);
+	}
+	a {
+		&:hover {
+			#close-inner {
+				fill: #F00;
+			}
+		}
+	}
 	button.close {
 		-webkit-appearance: none;
 		background-color: darken(#F00, 15%);
