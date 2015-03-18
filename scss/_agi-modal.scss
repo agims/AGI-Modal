@@ -59,6 +59,7 @@ $default-text-shadow-v-offset: 1px;
 	text-align: center;
 	top: -15px;
 	width: 25px;
+	z-index: 1000;
 	#close-inner {
 		@include transition(all 250ms);
 	}
