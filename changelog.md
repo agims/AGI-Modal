@@ -1,5 +1,9 @@
 # Change Log
-## *1.2.9
+## *1.2.9.1*
+* Quick fixes
+    * Label for "Remove Padding"
+    * z-index for close button
+## *1.2.9*
 * Fix for remove padding not showing up in options page
 ## *1.2.3 - 1.2.8*
 * Various fixes
