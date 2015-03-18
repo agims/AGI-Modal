@@ -1,7 +1,7 @@
 # AGI-Modal
 This is a WordPress Plugin that allows you to have a modal window pop up at a specified place on the page.  It works better than it sounds.  :)
 
-Latest Version:
-1.2.7 - Balmorhea
+## Latest Version:
+1.2.9 - Balmorhea
 
 [Click to see the roadmap](https://github.com/chris-agims/AGI-Modal/blob/master/roadmap.md)
