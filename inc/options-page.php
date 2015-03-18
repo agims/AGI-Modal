@@ -162,7 +162,8 @@ function agi_modal_option_page() {
 					</tr>
 					<tr id="remove-padding">
 						<th scope="row">
-							<label for="agi_modal_remove_padding">Subtitle</label>
+							<label for="agi_modal_remove_padding">Remove Padding</label>
+							<small>Do you want to remove the white space from around the edges?  Helpful if using shortcode.</small>
 						</th>
 						<td>
 							<?php $checked = ($agi_modal_remove_padding ? 'checked' : ''); ?>
