@@ -315,6 +315,9 @@
 
 	function load_after_wp() {
 		function show_agi_modal() {
+			if(current_user_can('list_users')) {
+				return FALSE;
+			}
 			if($_SESSION['agi_modal_form_finished']) {
 				return FALSE;
 			} 
