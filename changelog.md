@@ -1,4 +1,6 @@
 # Change Log
+## *1.2.11*
+* Add styling for .no-padding
 ## *1.2.10*
 * Modal will no longer show up if current user can list users (admin)
 ## *1.2.9.1*

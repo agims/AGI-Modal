@@ -68,6 +68,11 @@
 		if($is_bootstrap) {
 			if($bootstrap_version == "2") { // Bootstrap Modal Version 2
 				?>
+					<style>
+						.no-padding {
+							padding: 0;
+						}
+					</style>
 					<!-- Modal -->
 					<div id="myAGIModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 						<div id="myAGIModalWrap">
@@ -99,6 +104,11 @@
 				<?php
 			} else { // Bootstrap Modal Version 3
 				?>
+					<style>
+						.no-padding {
+							padding: 0;
+						}
+					</style>
 					<!-- Modal -->
 					<div class="modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 						<div id="myAGIModalWrap" class="modal-dialog<?=$padding_class?>">
