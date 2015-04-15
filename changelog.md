@@ -1,4 +1,8 @@
 # Change Log
+## *1.3*
+* Add ability to change background color
+* Add ability to prevent modal from showing up on the front page
+* Add ability to turn on and off the modal without having to disable the plugin
 ## *1.2.11*
 * Add styling for .no-padding
 ## *1.2.10*

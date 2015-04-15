@@ -1,6 +1,5 @@
 #Roadmap for AGI Modal
-##Version 1.3
-* Option for preventing modal from popping up for admin users
+##Version 1.4
 * Option for where hook is placed
 * Option for total views or split by page / post
 

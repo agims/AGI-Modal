@@ -33,6 +33,7 @@ function agi_modal_option_page() {
 	?>
 	<div class="wrap">
 		<h2>AGI Modal Options</h2>
+		AGI Modal v<?php echo MYPLUGIN_VERSION_NUM; ?> <a href="https://github.com/chris-agims/AGI-Modal" target="_blank"><small>Documentation</small></a>
 		<?php
 			// Put into a variable so that if we need to change it for testing we don't lose the original
 			$form_location = 'options.php';
@@ -42,6 +43,15 @@ function agi_modal_option_page() {
 			<h3>Modal Look</h3>
 			<table class="form-table">
 				<tbody>
+					<tr id="enabled">
+						<th scope="row">
+							<label for="agi_modal_enabled">Use the modal?</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_enabled ? 'checked' : ''); ?>
+							<input name="agi_modal_enabled" id="agi_modal_enabled" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
 					<tr id="use-header">
 						<th scope="row">
 							<label for="agi_modal_using_header">Use Header?</label>
@@ -162,12 +172,22 @@ function agi_modal_option_page() {
 					</tr>
 					<tr id="remove-padding">
 						<th scope="row">
-							<label for="agi_modal_remove_padding">Remove Padding</label>
+							<label for="agi_modal_remove_padding">Remove Padding</label><br />
 							<small>Do you want to remove the white space from around the edges?  Helpful if using shortcode.</small>
 						</th>
 						<td>
 							<?php $checked = ($agi_modal_remove_padding ? 'checked' : ''); ?>
 							<input name="agi_modal_remove_padding" id="agi_modal_remove_padding" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
+					<tr id="use-dark-bg">
+						<th scope="row">
+							<label for="agi_modal_use_dark_bg">Use Dark Background?</label><br />
+							<small>When the modal pops up, do you want the background dark?</small>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_use_dark_bg ? 'checked' : ''); ?>
+							<input name="agi_modal_use_dark_bg" id="agi_modal_use_dark_bg" type="checkbox" <?=$checked?>>
 						</td>
 					</tr>
 					<tr id="redirect-links">
@@ -226,6 +246,15 @@ function agi_modal_option_page() {
 								}
 							?>
 							</select>
+						</td>
+					</tr>
+					<tr id="show-on-front-page">
+						<th scope="row">
+							<label for="agi_modal_show_on_front_page">Show on Front Page?</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_show_on_front_page ? 'checked' : ''); ?>
+							<input name="agi_modal_show_on_front_page" id="agi_modal_show_on_front_page" type="checkbox" <?=$checked?>>
 						</td>
 					</tr>
 					<tr id="reset-time">

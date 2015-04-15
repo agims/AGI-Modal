@@ -6,14 +6,13 @@
 	function display_agi_modal() {
 		
 		$close_button = '
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
-<circle id="close-outer" fill="#FFFFFF" cx="15" cy="15" r="14.5"/>
-<circle id="close-inner" fill="#B30000" cx="15" cy="15" r="12"/>
-<g>
-	<path id="close-x" fill="#FFFFFF" d="M12.6,15l-5-5.1L10,7.5l5,5.1l5.1-5.1l2.4,2.4L17.4,15l5.1,5.1l-2.4,2.4L15,17.4l-5.1,5.1l-2.4-2.4L12.6,15
-		z"/>
-</g>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+	<circle id="close-outer"  cx="15" cy="15" r="14.5"/>
+	<circle id="close-inner" fill="#B30000" cx="15" cy="15" r="12"/>
+	<g>
+		<path id="close-x" fill="#FFFFFF" d="M12.6,15l-5-5.1L10,7.5l5,5.1l5.1-5.1l2.4,2.4L17.4,15l5.1,5.1l-2.4,2.4L15,17.4l-5.1,5.1l-2.4-2.4L12.6,15
+			z"/>
+	</g>
 </svg>
 		';
 		
@@ -31,6 +30,7 @@
 		$remove_padding		= get_option('agi_modal_remove_padding');
 		$redirect_links		= get_option('agi_modal_redirect_links');
 		$use_hook			= get_option('agi_modal_use_hook');
+		$use_dark_bg		= get_option('agi_modal_use_dark_bg');
 
 		if(get_option('agi_modal_hook')) {
 			$hook			= get_option('agi_modal_hook');
@@ -57,6 +57,12 @@
 			<?php
 		}
 		
+		if($use_dark_bg == TRUE) {
+			$background_tint = "";
+		} else {
+			$background_tint = "light";
+		}
+		
 		$put_hook			= (get_option('agi_modal_include_hook_el') ? '<!-- Hook --><div id="' . str_replace('#', '', $hook) . '"></div><!-- END Hook -->' : '');
 		
 		$is_bootstrap		= get_option('agi_modal_is_bootstrap');
@@ -74,7 +80,7 @@
 						}
 					</style>
 					<!-- Modal -->
-					<div id="myAGIModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
+					<div id="myAGIModal" class="modal hide fade <?=$background_tint?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 						<div id="myAGIModalWrap">
 							<?php
 								if($using_header) {
@@ -110,7 +116,7 @@
 						}
 					</style>
 					<!-- Modal -->
-					<div class="modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
+					<div class="modal fade <?=$background_tint?>" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 						<div id="myAGIModalWrap" class="modal-dialog<?=$padding_class?>">
 							<div class="modal-content">
 							<?php if($using_header) { ?>
@@ -142,7 +148,7 @@
 		} else { // Modified Bootstrap Modal Version 3
 			?>
 			<!-- Modal -->
-			<div class="agi-modal fade" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
+			<div class="agi-modal fade <?=$background_tint?>" id="myAGIModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
 				<div id="myAGIModalWrap" class="agi-modal-dialog">
 					<div class="agi-modal-content">
 					<?php if($using_header) { ?>
@@ -326,6 +332,12 @@
 	function load_after_wp() {
 		function show_agi_modal() {
 			if(current_user_can('list_users')) {
+				return FALSE;
+			}
+			if(!get_option('agi_modal_enabled')) {
+				return FALSE;
+			}
+			if(is_front_page() && !get_option('agi_modal_show_on_front_page')) {
 				return FALSE;
 			}
 			if($_SESSION['agi_modal_form_finished']) {
