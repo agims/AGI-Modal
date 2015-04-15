@@ -38,3 +38,11 @@ if (!defined('MYPLUGIN_VERSION_NUM'))
 	 $filename = 'inc/' . $file_to_require;
 	 require_once($filename);
  }
+ 
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'my_plugin_action_links' );
+
+function my_plugin_action_links( $links ) {
+   $links[] = '<a href="'. get_admin_url(null, 'options-general.php?page=agi-modal-options') .'">Settings</a>';
+   $links[] = '<a href="http://www.agims.com" target="_blank">AGI Marketing</a>';
+   return $links;
+}
