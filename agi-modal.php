@@ -2,7 +2,7 @@
 /*
 Plugin Name:		AGI Modal
 Plugin URI:			https://github.com/chris-agims/AGI-Modal
-Description:		Add a modal window that pops up when a certain point is reached.  Version 1.3 - Cleburne
+Description:		This is a WordPress Plugin that allows you to have a modal pop up. Can be used to either make it pop up when a certain waypoint is reached or after a certain amount of time.  <strong>Version 1.3 - Cleburne</strong>
 Version:			1.3
 Author:				Chris G. Clapp
 Author URI:			http://www.chrisclapp.com
