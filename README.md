@@ -2,7 +2,7 @@
 This is a WordPress Plugin that allows you to have a modal window pop up at a specified place on the page.  It works better than it sounds.  :)
 
 ## Latest Version:
-1.3 - Cleburne
+1.3.1 - Cleburne
 
 ## Synopsis
 The AGI Modal plugin is a modal plugin for WordPress based on [Bootstrap](http://www.getbootstrap.com)'s modal plugin.  It's been modified so as to not conflict with the namespace of other plugins and is in constant development.  It was first developed as a proof of concept and has since been developed mainly at [AGI Marketing](http://www.agims.com).

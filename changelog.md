@@ -1,4 +1,6 @@
 # Change Log
+## *1.3.1*
+* Adjust z-index to be higher
 ## *1.3*
 * Add ability to change background color
 * Add ability to prevent modal from showing up on the front page
