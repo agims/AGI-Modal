@@ -2,8 +2,8 @@
 /*
 Plugin Name:		AGI Modal
 Plugin URI:			https://github.com/chris-agims/AGI-Modal
-Description:		This is a WordPress Plugin that allows you to have a modal pop up. Can be used to either make it pop up when a certain waypoint is reached or after a certain amount of time.  <strong>Version 1.3 - Cleburne</strong>
-Version:			1.3
+Description:		This is a WordPress Plugin that allows you to have a modal pop up. Can be used to either make it pop up when a certain waypoint is reached or after a certain amount of time.  <strong>Version 1.3.1 - Cleburne</strong>
+Version:			1.3.1
 Author:				Chris G. Clapp
 Author URI:			http://www.chrisclapp.com
 Text Domain:		agi-modal
@@ -17,7 +17,7 @@ GitHub Branch:		master
     define('MYPLUGIN_VERSION_KEY', 'agi_modal_version');
 
 if (!defined('MYPLUGIN_VERSION_NUM'))
-    define('MYPLUGIN_VERSION_NUM', '1.3');
+    define('MYPLUGIN_VERSION_NUM', '1.3.1');
 
 
  
