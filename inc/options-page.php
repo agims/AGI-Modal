@@ -200,7 +200,7 @@ function agi_modal_option_page() {
 							<input name="agi_modal_redirect_links" id="agi_modal_redirect_links" type="checkbox" <?=$checked?>>
 						</td>
 					</tr>
-					<tr id="redirect-links">
+					<tr id="on-pages">
 						<th scope="row">
 							<label for="agi_modal_on_pages">Show Up on Pages?</label>
 						</th>
@@ -222,6 +222,41 @@ function agi_modal_option_page() {
 								}
 							?>
 							</select>
+						</td>
+					</tr>
+					<tr id="on-specified-template">
+						<th scope="row">
+							<label for="agi_modal_on_specified_template">Show Up only on specified page templates?</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_on_specified_template ? 'checked' : ''); ?>
+							<input name="agi_modal_on_specified_template" id="agi_modal_on_specified_template" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
+					<tr id="specified-template">
+						<th scope="row">
+							<label for="agi_modal_specified_template">Which Template?</label>
+						</th>
+						<td>
+							<input name="agi_modal_specified_template" id="agi_modal_specified_template" type="text" value="<?=$agi_modal_specified_template?>" class="regular-text ">
+						</td>
+					</tr>
+					<tr id="on-specified-ids">
+						<th scope="row">
+							<label for="agi_modal_on_specified_ids">Show Up only on specified IDs?</label>
+						</th>
+						<td>
+							<?php $checked = ($agi_modal_on_specified_ids ? 'checked' : ''); ?>
+							<input name="agi_modal_on_specified_ids" id="agi_modal_on_specified_ids" type="checkbox" <?=$checked?>>
+						</td>
+					</tr>
+					<tr id="specified-ids">
+						<th scope="row">
+							<label for="agi_modal_specified_ids">Which IDs?</label>
+							<small>Separate IDs with commas</small>
+						</th>
+						<td>
+							<input name="agi_modal_specified_ids" id="agi_modal_specified_ids" type="text" value="<?=$agi_modal_specified_ids?>" class="regular-text ">
 						</td>
 					</tr>
 					<tr id="on-posts">
