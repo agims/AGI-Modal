@@ -346,6 +346,27 @@
 			if($_SESSION['agi_modal_form_loaded'] >= get_option('agi_modal_number_of_views')) {
 				return FALSE;
 			}
+			if(get_option('agi_modal_on_specified_template') && !is_page_template(get_option('agi_modal_specified_template'))) {
+				return FALSE;
+			}
+			if(get_option('agi_modal_on_specified_ids')) {
+				$post_ids = get_option('agi_modal_specified_ids');
+				$post_ids = str_replace(' ', '', $post_ids);
+
+				global $post;
+
+				if(strpos($post_ids, ',')) {
+					$post_array = explode(',', $post_ids);
+					if(!in_array($post->ID, $post_array)) {
+						return FALSE;
+					}
+				} else {
+					if($post->ID != $post_ids) {
+						return FALSE;
+					}
+				}
+				
+			}
 			if(!is_single() && !get_option('agi_modal_on_pages')) {
 				return FALSE;
 			}
